@@ -235,5 +235,15 @@ namespace Xamarin.Forms
 			if (InternalItemsLayout is BindableObject bo)
 				SetInheritedBindingContext(bo, BindingContext);
 		}
+
+		public void ClearLogicalChildren()
+		{
+			// Reverse for-loop, so children can be removed while iterating
+			for (int i = _logicalChildren.Count - 1; i >= 0; i--)
+			{
+				RemoveLogicalChild(_logicalChildren[i]);
+			}
+		}
+
 	}
 }
